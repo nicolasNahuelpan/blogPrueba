@@ -1,3 +1,21 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 @import 'font_awesome5.css';
+
+#notice_wrapper {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 9999;
+    background-color: rgba(164,169,213,0.75);
+
+    p{
+        padding: 1rem 0;
+        text-align: center;
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: white;
+        letter-spacing: 1px;
+    }
+}
