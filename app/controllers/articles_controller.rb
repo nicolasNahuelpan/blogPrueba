@@ -14,11 +14,7 @@ class ArticlesController < ApplicationController
       f.js
     end
   end
-
-  def edit
-    @article = Article.find(params[:id])
-  end
-
+  
   def create
     @article = Article.new(article_params)
     respond_to do |format|
@@ -30,6 +26,10 @@ class ArticlesController < ApplicationController
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def edit
+    @article = Article.find(params[:id])
   end
 
   def update
