@@ -1,0 +1,41 @@
+<div class="modal fade" id='myModal' tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Texto de ejemplo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                    <%= form_with(model: @article, local: true) do |f| %>
+                    <div class="form-group">
+                        <%= f.label :title, "Titulo" %>
+                        <%= f.text_field :title, class: 'form-control' %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :desc, "Descripción" %>
+                        <%= f.cktext_area :desc, class: 'form-control' %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :body, "Contenido" %>
+                        <%= f.cktext_area :body, class: 'form-control' %>
+                    </div>
+                    <% if user_signed_in? %>
+                        <%= f.hidden_field :user_id, value: current_user.id %>
+                    <% else %>
+                        <%= f.hidden_field :user_id, value: '1' %>
+                    <% end %>
+            
+                    <div class="actions">
+                        <%= f.submit 'Publicar', class: 'btn btn-success btn-block' %>
+                    </div>
+                <% end %>
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div> -->
+        </div>
+    </div>
+</div>

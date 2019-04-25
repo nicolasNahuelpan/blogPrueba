@@ -1,0 +1,31 @@
+<div class="col-12">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <h1 class="article-header"><%= @article.title %></h1>
+                    <!-- <p class="author"><%= @article.user.name %></p> -->
+                    <div class="col mt-auto px-0">
+                        <%=  link_to ("<i class='fas fa-undo-alt'></i> Volver").html_safe, articles_path, class: 'btn btn-success btn-sm' %>
+                    </div>
+                </div>
+                <% if user_signed_in? %>
+                <div class="col-12 text-right mt-auto">
+                    <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_article_path(@article) %>
+                    <%= link_to @article, method: :delete, data: {confirm:'¿Estas seguro de que quieres eliminar el articulo?'} do%>
+                    <i class="fas fa-trash-alt"></i>
+                    <% end %>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <p><%= (raw @article.body) %></p>
+        </div>
+    </div>
+</div>
